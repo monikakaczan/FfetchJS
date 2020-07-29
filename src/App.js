@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import styled from 'styled-components'
+import React, { Component } from 'react';
+import styled from 'styled-components';
 
 const Image = styled.img`
   padding: 30px;
