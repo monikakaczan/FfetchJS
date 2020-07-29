@@ -81,8 +81,8 @@ class App extends Component {
           <div>
           <Row>
             { data.map((product, index) => 
-              <Ul>
-                  <li key={index}>
+              <Ul key={index}>
+                  <li>
                       <Image alt = "model picture" src={product.images.cutOut} />
                       <BrandName>{product.brand.name}</BrandName>
                       <ItemDescripton>{product.shortDescription}</ItemDescripton>
