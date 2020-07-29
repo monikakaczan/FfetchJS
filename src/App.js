@@ -44,7 +44,10 @@ const Row = styled.div`
       grid-template-columns: repeat(3, 1fr);
       }
   }
-   
+`
+
+const Ul = styled.ul`
+  list-style-type: none
 `
 
 class App extends Component {
@@ -78,11 +81,14 @@ class App extends Component {
           <div>
           <Row>
             { data.map((product, index) => 
-                <p key={index}>
-                    <Image alt = "model picture" src={product.images.cutOut} />
-                    <BrandName>{product.brand.name}</BrandName>
-                    <ItemDescripton>{product.shortDescription}</ItemDescripton>
-                </p>)
+              <Ul>
+                  <li key={index}>
+                      <Image alt = "model picture" src={product.images.cutOut} />
+                      <BrandName>{product.brand.name}</BrandName>
+                      <ItemDescripton>{product.shortDescription}</ItemDescripton>
+                  </li>
+              </Ul>  
+              )
             }
           </Row>    
       </div>
