@@ -1,4 +1,51 @@
 import { Component } from 'react';
+import styled from 'styled-components'
+
+const Image = styled.img`
+  padding: 30px;
+`
+const BrandName = styled.div`
+  font-weight: bold;
+  position: relative;
+  padding-top: 3px;
+  padding-right: 2px;
+  padding-left: 2px;
+  text-align: center;
+`
+
+const ItemDescripton = styled.div`
+  position: relative;
+  padding-top: 3px;
+  padding-right: 2px;
+  padding-left: 2px;
+  text-align: center;
+`
+
+const Row = styled.div`
+  
+  @media (max-width: 960px){
+      position: relative;
+      padding-top: 3px;
+      padding-right: 2px;
+      padding-left: 2px;
+      text-align: center;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+  
+    }
+  
+    @media (min-width: 960px){
+      position: relative;
+      padding-top: 3px;
+      padding-right: 2px;
+      padding-left: 2px;
+      text-align: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      }
+  }
+   
+`
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +75,17 @@ class App extends Component {
   render() {
     const { data } = this.state
         return (
-        
+          <div>
+          <Row>
+            { data.map((product, index) => 
+                <p key={index}>
+                    <Image alt = "model picture" src={product.images.cutOut} />
+                    <BrandName>{product.brand.name}</BrandName>
+                    <ItemDescripton>{product.shortDescription}</ItemDescripton>
+                </p>)
+            }
+          </Row>    
+      </div>
     )
   }
 }
