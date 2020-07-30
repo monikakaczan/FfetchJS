@@ -22,6 +22,7 @@ const ItemDescripton = styled.div`
 `
 
 const Row = styled.div`
+
   
   @media (max-width: 960px){
       position: relative;
