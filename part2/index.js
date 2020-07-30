@@ -1,12 +1,10 @@
 const fetch = require("node-fetch");
-var ColorThief = require('color-thief-jimp');
-var Jimp = require('jimp');
-var convert = require('color-convert');
+const ColorThief = require('color-thief-jimp');
+const Jimp = require('jimp');
+const convert = require('color-convert');
 const Coloraze = require('coloraze');
 const coloraze = new Coloraze();
  
-
-
 const url='https://www.farfetch.com/uk/plpslice/listing-api/query?setId=9645&view=10&gender=Men'
 
 const init = {
@@ -35,8 +33,6 @@ const getDominantColor = (url) => {
         })
 }
     
-
-
 exports.getData = async () => {
 
 	try {
