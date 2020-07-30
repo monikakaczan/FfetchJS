@@ -25,3 +25,4 @@ For the second part:
 cd part2 
 node app.js
 ```
+The second part returns one array with designers, descriptions, urls, images and colours. 
