@@ -18,21 +18,31 @@ const init = {
 }
 
 const getDominantColor = (url) => {
-    // const colors = Promise.all(urls.map(url => getDominantColor(url)))
-    
-    Jimp.read(url, (err, sourceImage) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
 
-        const dominantColor = ColorThief.getColor(sourceImage);
-        const convertedHex = convert.rgb.hex(dominantColor)
-        const converted = coloraze.name(`#${convertedHex}`)
-        console.log(converted)
-        return converted
-      })
+        return new Promise((resolve, reject)=> {
+            Jimp.read(url, (err, sourceImage) => {
+                if (err) {
+                  console.error(err);
+                  return;
+                }
+        
+                const dominantColor = ColorThief.getColor(sourceImage);
+                const convertedHex = convert.rgb.hex(dominantColor)
+                const converted = coloraze.name(`#${convertedHex}`)
+                // console.log(converted)
+                resolve(converted)
+              })
+            })
+    
+    // const onResolved = (resolvedValue) => resolvedValue
+    
+    // promise.then(onResolved, null)
+    // promise.then((resolvedValue) => {
+    //     console.log('hello',resolvedValue)
+    // })
 }
+    
+
 
 exports.getData = async () => {
 
@@ -45,13 +55,21 @@ exports.getData = async () => {
 
             const urls = products.map(productUrl => productUrl.images.cutOut)
             
-            const colors = urls.map(url => getDominantColor(url))
-            console.log('colors', colors)
             // return an array of designers, descriptions, urls, images, colours
             const productsArray = products.reduce((acc, product) => {
                 return acc.concat([product.brand.name, product.shortDescription, product.url, product.images.cutOut])
             }, [])
-            return productsArray
+
+            
+            return Promise.all(urls.map(url => getDominantColor(url)))
+            .then(data => {
+                    let index = 4;
+                    data.forEach((i) => {
+                    productsArray.splice(index, 0, i);
+                    index += 5;
+                });
+                return productsArray
+            })
         }
 		
 	} catch (err) {
