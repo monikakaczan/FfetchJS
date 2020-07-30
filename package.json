@@ -6,7 +6,6 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "canvas": "^2.6.1",
     "color-convert": "^2.0.1",
     "color-thief": "^2.2.5",
     "color-thief-jimp": "^2.0.2",
