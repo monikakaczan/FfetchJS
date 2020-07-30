@@ -53,7 +53,6 @@ exports.getData = async () => {
                 return acc.concat([product.brand.name, product.shortDescription, product.url, product.images.cutOut])
             }, [])
 
-
             return Promise.all(urls.map(url => getDominantColor(url)))
             .then(data => {
                 //start at 4th index and inject color of the product every 5th index
