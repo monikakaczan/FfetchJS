@@ -15,8 +15,9 @@ cd FfetchJS
 ```bash
 npm install
 npm start
-go to http://localhost:3000 to view in the browser
-```
+``` 
+go to http://localhost:3000 to view in the browser (please allow a few seconds for it to load- explanation in App.js file (fetch))
+
 
 #### Part 2
 For the second part:
