@@ -17,3 +17,10 @@ npm install
 npm start
 go to http://localhost:3000 to view in the browser
 ```
+
+#### Part 2
+For the second part:
+```bash 
+cd part2 
+node app.js
+```

@@ -64,6 +64,7 @@ class App extends Component {
     // the only way that worked around the CORS policy
     // was adding cors-anywhere
     // normally I would fetch just the farfetch url 
+    // if nothing loads please refresh a few times as it was quite unstable for me at the beginning
     fetch('https://cors-anywhere.herokuapp.com/https://www.farfetch.com/uk/plpslice/listing-api/query?setId=9645&view=180&gender=Men', { 
         method: 'GET',
         mode: 'cors',
