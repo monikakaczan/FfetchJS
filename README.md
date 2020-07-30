@@ -26,3 +26,8 @@ cd part2
 node app.js
 ```
 The second part returns one array with designers, descriptions, urls, images and colours. 
+
+#### Tests: 
+``` bash
+npm run test
+```
