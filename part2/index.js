@@ -19,27 +19,20 @@ const init = {
 
 const getDominantColor = (url) => {
 
-        return new Promise((resolve, reject)=> {
-            Jimp.read(url, (err, sourceImage) => {
-                if (err) {
-                  console.error(err);
-                  return;
-                }
-        
-                const dominantColor = ColorThief.getColor(sourceImage);
-                const convertedHex = convert.rgb.hex(dominantColor)
-                const converted = coloraze.name(`#${convertedHex}`)
-                // console.log(converted)
-                resolve(converted)
-              })
+    return new Promise((resolve, reject)=> {
+        Jimp.read(url, (err, sourceImage) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+    
+            const dominantColor = ColorThief.getColor(sourceImage);
+            const convertedHex = convert.rgb.hex(dominantColor)
+            //coloraze returns names of colors
+            const converted = coloraze.name(`#${convertedHex}`)
+            resolve(converted)
             })
-    
-    // const onResolved = (resolvedValue) => resolvedValue
-    
-    // promise.then(onResolved, null)
-    // promise.then((resolvedValue) => {
-    //     console.log('hello',resolvedValue)
-    // })
+        })
 }
     
 
@@ -60,19 +53,20 @@ exports.getData = async () => {
                 return acc.concat([product.brand.name, product.shortDescription, product.url, product.images.cutOut])
             }, [])
 
-            
+
             return Promise.all(urls.map(url => getDominantColor(url)))
             .then(data => {
+                //start at 4th index and inject color of the product every 5th index
                     let index = 4;
                     data.forEach((i) => {
-                    productsArray.splice(index, 0, i);
-                    index += 5;
+                        productsArray.splice(index, 0, i);
+                        index += 5;
                 });
                 return productsArray
             })
         }
-		
-	} catch (err) {
+        throw new Error ('Request failed!')
+    } catch (err) {
         console.log(err)
 	}
 }
