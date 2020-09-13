@@ -10,7 +10,7 @@
     "color-thief": "^2.2.5",
     "color-thief-jimp": "^2.0.2",
     "coloraze": "^1.0.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
